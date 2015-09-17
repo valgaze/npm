@@ -37,6 +37,10 @@
       "from": "asap@2.0.5",
       "resolved": "https://registry.npmjs.org/asap/-/asap-2.0.5.tgz"
     },
+    "call-limit": {
+      "version": "1.0.3",
+      "from": "call-limit@>=1.0.1 <1.1.0"
+    },
     "chownr": {
       "version": "1.0.1",
       "from": "chownr@>=1.0.1 <1.1.0",
