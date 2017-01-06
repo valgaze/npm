@@ -92,6 +92,37 @@ test('\'npm install --save-dev --save-exact\' should install local pkg', functio
   )
 })
 
+test('\'npm install --save -e\' should install local pkg', function (t) {
+  common.npm(
+    [
+      '--loglevel', 'silent',
+      '--registry', common.registry,
+      '--save',
+      '-e',
+      'install', 'underscore@1.3.1'
+    ],
+    EXEC_OPTS,
+    function (err, code) {
+      t.ifError(err, 'npm ran without issue')
+      t.notOk(code, 'npm install exited without raising an error code')
+
+      var p = path.resolve(pkg, 'node_modules/underscore/package.json')
+      t.ok(JSON.parse(fs.readFileSync(p)))
+
+      p = path.resolve(pkg, 'package.json')
+      var pkgJson = JSON.parse(fs.readFileSync(p, 'utf8'))
+
+      t.same(
+        pkgJson.dependencies,
+        { 'underscore': '1.3.1' },
+        'underscore dependency should specify exactly 1.3.1'
+      )
+
+      t.end()
+    }
+  )
+})
+
 test('cleanup', function (t) {
   server.close()
   cleanup()

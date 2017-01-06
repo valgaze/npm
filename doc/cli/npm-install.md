@@ -99,7 +99,7 @@ after packing it up into a tarball (b).
     When using any of the above options to save dependencies to your
     package.json, there are two additional, optional flags:
 
-    * `-E, --save-exact`: Saved dependencies will be configured with an
+    * `-E, -e, --save-exact`: Saved dependencies will be configured with an
       exact version rather than using npm's default semver range
       operator.
 
